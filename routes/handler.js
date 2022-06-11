@@ -1,37 +1,67 @@
-const express = require('express')
+const express = require('express');
 
 const router = express.Router();
 const Schema = require('../models/Schema');
 
-router.get('/addUsers',async(req, res) => {
- const user = {username:'Ankit'};
- const newUser = new Schema.Users(user);
+//router.get('/Buy',async (req, res) => {
 
- 
+//})
 
- try{
-   await newUser.save(async(err,newUserResult) => {
-     console.log("New user Created: " + JSON.stringify(newUserResult));
+router.post('/Add', (req, res) => {
+  console.log(req.body);
+});
+router.get('/addUsers', async (req, res) => {
+  const user = { username: 'Ankit' };
+  const newUser = new Schema.Users(user);
 
-     res.end('New user: ' + JSON.stringify(newUserResult));
-   });
- }catch(err) {
-  console.log(err);
-  res.end('User not added: ');
- }
- 
-})
-router.get('/tweets',(req,res) => {
- const str = [{
-  "name":"Rohan Magar",
-  "msg":"This is my first tweets",
-  "username":"Roahn"
- }]
- res.end(JSON.stringify(str));
-})
+  try {
+    await newUser.save(async (err, newUserResult) => {
+      console.log('New user Created: ' + JSON.stringify(newUserResult));
 
-router.post('/addtweets',(req,res) => {
- res.end('NA')
-})
+      res.end('New user: ' + JSON.stringify(newUserResult));
+    });
+  } catch (err) {
+    console.log(err);
+    res.end('User not added: ');
+  }
+});
+router.get('/tweets', (req, res) => {
+  const str = [
+    {
+      name: 'Rohan Magar',
+      msg: 'This is my first tweets',
+      username: 'Roahn',
+    },
+  ];
+  res.end(JSON.stringify(str));
+});
+
+router.post('/addTweet', async (req, res) => {
+  obj = {
+    Address: '',
+    FNAME: '',
+    LNAME: '',
+    EggsPrice: '',
+    PRICE: '',
+  };
+  obj.Address = req.body.address;
+  obj.FNAME = req.body.fname;
+  obj.LNAME = req.body.Eggs;
+  obj.COUNT = req.body.Eggs;
+  obj.PRICE = req.body.EggsPrice;
+  console.log(obj);
+  const newOrder = new Schema.Order(obj);
+  try {
+    await newOrder.save(async (err, newOrderResult) => {
+      console.log('New user Created: ' + JSON.stringify(newOrderResult));
+
+    
+    });
+  } catch (err) {
+    console.log(err);
+    
+  }
+  res.redirect('/');
+});
 
 module.exports = router;

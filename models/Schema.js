@@ -20,6 +20,7 @@ const OrderSchema = new Schema({
   Address:{ type: String, required: true},
   COUNT:{ type: String, required: true},
   PRICE:{ type: String, required: true},
+  UID:{ type: String, required: true},
 
 })
 

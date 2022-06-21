@@ -42,12 +42,14 @@ router.post('/addOrder', async (req, res) => {
     LNAME: '',
     EggsPrice: '',
     PRICE: '',
+    UID:'',
   };
   obj.Address = req.body.address;
   obj.FNAME = req.body.fname;
   obj.LNAME = req.body.lname;
   obj.COUNT = req.body.Eggs;
   obj.PRICE = req.body.EggsPrice;
+  obj.UID = req.body.uid;
   console.log(obj);
   const newOrder = new Schema.Order(obj);
   try {
@@ -66,5 +68,13 @@ router.get('/DashData',  async(req, res) => {
     const OrderData = await data.find().exec();
     res.end(JSON.stringify(OrderData));
   
+});
+router.get('/UserOrderData', async(req, res) =>{
+  // url: /path?uid='test'
+  console.log(req.query['uid']); // result: test
+  const data = Schema.Order;
+    const OrderData = await data.find({ UID: req.query['uid'] }).exec();
+    res.end(JSON.stringify(OrderData));
+  //res.end(JSON.stringify(req.query['name']));
 });
 module.exports = router;

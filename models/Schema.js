@@ -15,14 +15,14 @@ const TweetsSchema = new Schema({
 
 
 const OrderSchema = new Schema({
-  FNAME:{ type: String, required: true},
+  FNAME: { type: String, required: true },
   // LNAME:{ type: String, required: true},
-  Address:{ type: String, required: true},
-  COUNT:{ type: String, required: true},
-  PRICE:{ type: String, required: true},
-  UID:{ type: String, required: true},
-
-})
+  Address: { type: String, required: true },
+  COUNT: { type: String, required: true },
+  PRICE: { type: String, required: true },
+  UID: { type: String, required: true },
+  status: { type: String, default: '0' },
+});
 
 const Users = mongoose.model('users',userSchema ,'users');
 

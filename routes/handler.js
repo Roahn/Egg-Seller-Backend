@@ -77,4 +77,28 @@ router.get('/UserOrderData', async(req, res) =>{
     res.end(JSON.stringify(OrderData));
   //res.end(JSON.stringify(req.query['name']));
 });
+
+router.get('/status', async (req, res) => {
+  // url: /path?tid='test'
+  console.log(req.query['tid']); // result: test
+  const data = Schema.Order;
+  let user_id = req.query['tid'];
+  var rD
+  const OrderData = await data.findByIdAndUpdate(
+    user_id,
+    { status: 1 },
+    null,
+    function (err, docs) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('Original Doc : ', docs);
+        rD = docs;
+      }
+    }
+  );
+  res.end(JSON.stringify(rD));
+  //res.end(JSON.stringify(req.query['name']));
+});
+
 module.exports = router;

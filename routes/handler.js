@@ -39,14 +39,14 @@ router.post('/addOrder', async (req, res) => {
   obj = {
     Address: '',
     FNAME: '',
-    LNAME: '',
+    // LNAME: '',
     EggsPrice: '',
     PRICE: '',
     UID:'',
   };
   obj.Address = req.body.address;
   obj.FNAME = req.body.fname;
-  obj.LNAME = req.body.lname;
+  // obj.LNAME = req.body.lname;
   obj.COUNT = req.body.Eggs;
   obj.PRICE = req.body.EggsPrice;
   obj.UID = req.body.uid;

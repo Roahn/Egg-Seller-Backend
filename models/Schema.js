@@ -16,7 +16,7 @@ const TweetsSchema = new Schema({
 
 const OrderSchema = new Schema({
   FNAME:{ type: String, required: true},
-  LNAME:{ type: String, required: true},
+  // LNAME:{ type: String, required: true},
   Address:{ type: String, required: true},
   COUNT:{ type: String, required: true},
   PRICE:{ type: String, required: true},

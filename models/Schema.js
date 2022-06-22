@@ -21,6 +21,7 @@ const OrderSchema = new Schema({
   COUNT: { type: String, required: true },
   PRICE: { type: String, required: true },
   UID: { type: String, required: true },
+  EMAIL: { type: String, required: true },
   status: { type: String, default: '0' },
 });
 

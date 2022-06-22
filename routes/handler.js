@@ -43,6 +43,7 @@ router.post('/addOrder', async (req, res) => {
     EggsPrice: '',
     PRICE: '',
     UID:'',
+    EMAIL:'',
   };
   obj.Address = req.body.address;
   obj.FNAME = req.body.fname;
@@ -50,6 +51,7 @@ router.post('/addOrder', async (req, res) => {
   obj.COUNT = req.body.Eggs;
   obj.PRICE = req.body.EggsPrice;
   obj.UID = req.body.uid;
+  obj.EMAIL=req.body.email;
   console.log(obj);
   const newOrder = new Schema.Order(obj);
   try {
